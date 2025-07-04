@@ -43,7 +43,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            calciumion/new-api
+            doomnaiad/openrouter
             ghcr.io/${{ github.repository }}
 
       - name: Build and push Docker images
