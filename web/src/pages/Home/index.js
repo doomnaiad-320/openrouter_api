@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Button, Typography, Tag, Input, ScrollList, ScrollItem } from '@douyinfe/semi-ui';
+import { Button, Tag, Input, ScrollList, ScrollItem, Card, Typography, Table, Spin } from '@douyinfe/semi-ui';
 import { API, showError, isMobile, copy, showSuccess } from '../../helpers';
 import { API_ENDPOINTS } from '../../constants/common.constant';
 import { StatusContext } from '../../context/Status';
@@ -9,9 +9,9 @@ import { IconGithubLogo, IconPlay, IconFile, IconCopy } from '@douyinfe/semi-ico
 import { Link } from 'react-router-dom';
 import NoticeModal from '../../components/layout/NoticeModal';
 import SEO from '../../components/SEO';
-import { Moonshot, OpenAI, XAI, Zhipu, Volcengine, Cohere, Claude, Gemini, Suno, Minimax, Wenxin, Spark, Qingyan, DeepSeek, Qwen, Midjourney, Grok, AzureAI, Hunyuan, Xinference } from '@lobehub/icons';
 
-const { Text } = Typography;
+const { Text, Title } = Typography;
+
 
 const Home = () => {
   const { t, i18n } = useTranslation();
@@ -25,6 +25,8 @@ const Home = () => {
   const endpointItems = API_ENDPOINTS.map((e) => ({ value: e }));
   const [endpointIndex, setEndpointIndex] = useState(0);
   const isChinese = i18n.language.startsWith('zh');
+  const [pricingData, setPricingData] = useState([]);
+  const [pricingLoading, setPricingLoading] = useState(false);
 
   const displayHomePageContent = async () => {
     setHomePageContent(localStorage.getItem('home_page_content') || '');
@@ -63,6 +65,53 @@ const Home = () => {
     }
   };
 
+  const loadPricingData = async () => {
+    setPricingLoading(true);
+    try {
+      const res = await API.get('/api/pricing');
+      const { success, data, group_ratio } = res.data;
+      if (success) {
+        // 只取前8个热门模型
+        const popularModels = data.slice(0, 8);
+        const defaultGroupRatio = group_ratio?.default || 1;
+
+        const formattedData = popularModels.map(item => ({
+          model_name: item.model_name,
+          quota_type: item.quota_type,
+          model_ratio: item.model_ratio,
+          model_price: item.model_price,
+          completion_ratio: item.completion_ratio,
+          formatted_price: formatPrice(item, defaultGroupRatio)
+        }));
+
+        setPricingData(formattedData);
+      }
+    } catch (error) {
+      console.error('获取价格数据失败:', error);
+    }
+    setPricingLoading(false);
+  };
+
+  const formatPrice = (item, groupRatio) => {
+    if (item.quota_type === 0) {
+      // 按量计费
+      const inputPrice = (item.model_ratio * 2 * groupRatio).toFixed(3);
+      const completionPrice = (item.model_ratio * item.completion_ratio * 2 * groupRatio).toFixed(3);
+      return {
+        type: t('按量计费'),
+        input: `$${inputPrice} / 1M tokens`,
+        completion: `$${completionPrice} / 1M tokens`
+      };
+    } else {
+      // 按次计费
+      const price = (parseFloat(item.model_price) * groupRatio).toFixed(3);
+      return {
+        type: t('按次计费'),
+        price: `$${price}`
+      };
+    }
+  };
+
   useEffect(() => {
     const checkNoticeAndShow = async () => {
       const lastCloseDate = localStorage.getItem('notice_close_date');
@@ -85,6 +134,7 @@ const Home = () => {
 
   useEffect(() => {
     displayHomePageContent().then();
+    loadPricingData().then();
   }, []);
 
   useEffect(() => {
@@ -375,79 +425,74 @@ const Home = () => {
                   </div>
                 </div>
 
-                {/* 框架兼容性图标 */}
-                <div className="mt-12 md:mt-16 lg:mt-20 w-full">
-                  <div className="flex items-center mb-6 md:mb-8 justify-center">
-                    <Text type="tertiary" className="text-lg md:text-xl lg:text-2xl font-light">
-                      {t('支持众多的大模型供应商')}
+                {/* 价格清单 */}
+                <div className="w-full max-w-5xl mt-12 md:mt-16">
+                  <div className="mb-8 md:mb-12 text-center">
+                    <Title heading={2} className="mb-4 text-2xl font-bold md:text-4xl text-semi-color-text-0">
+                      {t('透明定价')}
+                    </Title>
+                    <Text type="tertiary" className="text-base md:text-lg">
+                      {t('实时价格，按需付费，无隐藏费用')}
                     </Text>
                   </div>
-                  <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 max-w-5xl mx-auto px-4">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Moonshot size={40} />
+
+                  {pricingLoading ? (
+                    <div className="flex justify-center py-8">
+                      <Spin size="large" />
                     </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <OpenAI size={40} />
+                  ) : (
+                    <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+                      {pricingData.map((item, index) => (
+                        <Card
+                          key={index}
+                          className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border hover:shadow-lg transition-all duration-300 hover:scale-105"
+                          bodyStyle={{ padding: '20px' }}
+                        >
+                          <div className="text-center">
+                            <Title heading={4} className="text-lg font-semibold text-semi-color-text-0 mb-2">
+                              {item.model_name}
+                            </Title>
+                            <Tag color="blue" className="mb-3">
+                              {item.formatted_price.type}
+                            </Tag>
+                            {item.quota_type === 0 ? (
+                              <div className="space-y-2">
+                                <div className="text-sm text-semi-color-text-1">
+                                  {t('提示')}: {item.formatted_price.input}
+                                </div>
+                                <div className="text-sm text-semi-color-text-1">
+                                  {t('补全')}: {item.formatted_price.completion}
+                                </div>
+                                <div className="text-xs text-semi-color-text-2 mt-2">
+                                  {t('倍率')}: {item.model_ratio}x
+                                </div>
+                              </div>
+                            ) : (
+                              <div className="space-y-2">
+                                <div className="text-lg font-bold text-semi-color-text-0">
+                                  {item.formatted_price.price}
+                                </div>
+                                <div className="text-xs text-semi-color-text-2">
+                                  {t('按次计费')}
+                                </div>
+                              </div>
+                            )}
+                          </div>
+                        </Card>
+                      ))}
                     </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <XAI size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Zhipu.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Volcengine.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Cohere.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Claude.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Gemini.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Suno size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Minimax.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Wenxin.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Spark.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Qingyan.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <DeepSeek.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Qwen.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Midjourney size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Grok size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <AzureAI.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Hunyuan.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Xinference.Color size={40} />
-                    </div>
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex items-center justify-center">
-                      <Typography.Text className="!text-lg sm:!text-xl md:!text-2xl lg:!text-3xl font-bold">30+</Typography.Text>
-                    </div>
+                  )}
+
+                  <div className="text-center mt-8">
+                    <Link to="/pricing">
+                      <Button theme="borderless" type="primary" size="large">
+                        {t('查看完整价格表')}
+                      </Button>
+                    </Link>
                   </div>
                 </div>
+
+
               </div>
             </div>
           </div>
