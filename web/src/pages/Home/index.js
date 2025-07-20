@@ -135,49 +135,7 @@ const Home = () => {
                     {t('更好的价格，更好的稳定性，只需要将模型基址替换为：')}
                   </p>
 
-                  {/* BASE URL 与端点选择 - 使用原来的UI样式 */}
-                  <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mt-4 md:mt-6 max-w-md">
-                    <Input
-                      readonly
-                      value={serverAddress}
-                      className="flex-1 !rounded-full"
-                      size={isMobile() ? 'default' : 'large'}
-                      suffix={
-                        <div className="flex items-center gap-2">
-                          <span className="text-blue-500 font-medium">/v1/messages</span>
-                          <Button
-                            theme="borderless"
-                            icon={<IconCopy />}
-                            size="small"
-                            onClick={() => copy(serverAddress, t('复制成功！'))}
-                          />
-                        </div>
-                      }
-                    />
-                  </div>
 
-                  <div className="flex gap-4 justify-center items-center mt-4">
-                    <Button
-                      theme="solid"
-                      type="primary"
-                      size="large"
-                      icon={<IconPlay />}
-                      onClick={() => window.open('/settings/keys', '_blank')}
-                      className="!rounded-full"
-                    >
-                      {t('获取密钥')}
-                    </Button>
-                    <Button
-                      theme="borderless"
-                      type="tertiary"
-                      size="large"
-                      icon={<IconFile />}
-                      onClick={() => window.open('/docs', '_blank')}
-                      className="!rounded-full"
-                    >
-                      {t('文档')}
-                    </Button>
-                  </div>
 
                   {/* 功能对比区域 - 按照设计图样式 */}
                   <div className="w-full max-w-5xl mt-12 md:mt-16">
