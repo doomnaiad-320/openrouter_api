@@ -137,179 +137,7 @@ const Home = () => {
 
 
 
-                  {/* 功能对比区域 - 按照设计图样式 */}
-                  <div className="w-full max-w-5xl mt-12 md:mt-16">
-                    <div className="mb-8 md:mb-12 text-center">
-                      <h2 className="mb-4 text-2xl font-bold md:text-4xl text-semi-color-text-0">
-                        {t('告别管理复杂性，开始交付功能。')}
-                      </h2>
-                    </div>
-                    <div className="grid gap-6 md:grid-cols-2">
-                      {/* 第一行：管理供应商关系 vs 单一API */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
-                        <div className="flex gap-4">
-                          <div className="flex-shrink-0 flex items-center">
-                            <div className="w-8 h-8 text-semi-color-text-1">
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
-                                <circle cx="12" cy="12" r="3"/>
-                                <path d="M12 1v6m0 6v6"/>
-                                <path d="m21 12-6-3-6 3-6-3"/>
-                              </svg>
-                            </div>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-2">
-                              <span className="text-red-500 text-sm mt-1">✕</span>
-                              <p className="font-medium text-semi-color-text-1">{t('管理 5 个以上供应商关系')}</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <span className="text-green-500 text-sm mt-1">✓</span>
-                              <p className="font-medium text-semi-color-text-0">{t('单一API，单一合同，统一计费')}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
 
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
-                        <div className="flex gap-4">
-                          <div className="flex-shrink-0 flex items-center">
-                            <div className="w-8 h-8 text-semi-color-text-1">
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
-                                <polyline points="16 18 22 12 16 6"/>
-                                <polyline points="8 6 2 12 8 18"/>
-                              </svg>
-                            </div>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-2">
-                              <span className="text-red-500 text-sm mt-1">✕</span>
-                              <p className="font-medium text-semi-color-text-1">{t('构建自定义重试逻辑')}</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <span className="text-green-500 text-sm mt-1">✓</span>
-                              <p className="font-medium text-semi-color-text-0">{t('提供商之间的自动故障转移')}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* 第二行：容量限制 vs 智能路由 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
-                        <div className="flex gap-4">
-                          <div className="flex-shrink-0 flex items-center">
-                            <div className="w-8 h-8 text-semi-color-text-1">
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
-                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                                <polyline points="14,2 14,8 20,8"/>
-                                <line x1="16" y1="13" x2="8" y2="13"/>
-                                <line x1="16" y1="17" x2="8" y2="17"/>
-                                <polyline points="10,9 9,9 8,9"/>
-                              </svg>
-                            </div>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-2">
-                              <span className="text-red-500 text-sm mt-1">✕</span>
-                              <p className="font-medium text-semi-color-text-1">{t('容量和速率限制')}</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <span className="text-green-500 text-sm mt-1">✓</span>
-                              <p className="font-medium text-semi-color-text-0">{t('当达到限制时，故障转移到我们的容量')}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
-                        <div className="flex gap-4">
-                          <div className="flex-shrink-0 flex items-center">
-                            <div className="w-8 h-8 text-semi-color-text-1">
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
-                                <path d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3"/>
-                                <circle cx="6" cy="17.25" r=".75"/>
-                                <circle cx="18" cy="17.25" r=".75"/>
-                              </svg>
-                            </div>
-                          </div>
-                          <div className="space-y-3">
-                            <div className="flex items-start gap-2">
-                              <span className="text-red-500 text-sm mt-1">✕</span>
-                              <p className="font-medium text-semi-color-text-1">{t('为每个新模型维护单独的代码')}</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <span className="text-green-500 text-sm mt-1">✓</span>
-                              <p className="font-medium text-semi-color-text-0">{t('模型间切换成本为零')}</p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* 应用场景说明 */}
-                  <div className="mt-8 md:mt-10 max-w-4xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                      {/* 虚拟角色聊天 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
-                            <span className="text-white text-xl">🎭</span>
-                          </div>
-                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
-                            {t('虚拟角色聊天')}
-                          </h3>
-                        </div>
-                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
-                          {t('为 SillyTavern、Omate 等虚拟角色聊天应用提供优质的 Gemini、Claude API 接口，让您的 AI 角色更加生动智能。')}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">SillyTavern</span>
-                          <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">Omate</span>
-                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Gemini</span>
-                          <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">Claude</span>
-                        </div>
-                      </div>
-
-                      {/* 开发者工具 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
-                            <span className="text-white text-xl">💻</span>
-                          </div>
-                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
-                            {t('开发者工具')}
-                          </h3>
-                        </div>
-                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
-                          {t('为 Claude Code、Cline、Rook Code 等开发工具提供低价的 Claude Sonnet 4、Gemini 2.5 Pro，助力高效编程。')}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Claude Code</span>
-                          <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium">Cline</span>
-                          <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">Rook Code</span>
-                          <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Sonnet 4</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* 特色优势 */}
-                    <div className="mt-8 md:mt-10 text-center">
-                      <div className="inline-flex items-center gap-6 md:gap-8 px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl">
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('稳定可靠')}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('价格优惠')}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('即插即用')}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
 
 
 
@@ -371,6 +199,180 @@ const Home = () => {
                       </Button>
                     )
                   )}
+                </div>
+
+                {/* 应用场景说明 */}
+                <div className="mt-8 md:mt-10 max-w-4xl mx-auto">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                    {/* 虚拟角色聊天 */}
+                    <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                          <span className="text-white text-xl">🎭</span>
+                        </div>
+                        <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
+                          {t('虚拟角色聊天')}
+                        </h3>
+                      </div>
+                      <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
+                        {t('为 SillyTavern、Omate 等虚拟角色聊天应用提供优质的 Gemini、Claude API 接口，让您的 AI 角色更加生动智能。')}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">SillyTavern</span>
+                        <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">Omate</span>
+                        <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Gemini</span>
+                        <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">Claude</span>
+                      </div>
+                    </div>
+
+                    {/* 开发者工具 */}
+                    <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                      <div className="flex items-center mb-4">
+                        <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
+                          <span className="text-white text-xl">💻</span>
+                        </div>
+                        <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
+                          {t('开发者工具')}
+                        </h3>
+                      </div>
+                      <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
+                        {t('为 Claude Code、Cline、Rook Code 等开发工具提供低价的 Claude Sonnet 4、Gemini 2.5 Pro，助力高效编程。')}
+                      </p>
+                      <div className="flex flex-wrap gap-2 mt-4">
+                        <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Claude Code</span>
+                        <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium">Cline</span>
+                        <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">Rook Code</span>
+                        <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Sonnet 4</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* 特色优势 */}
+                  <div className="mt-8 md:mt-10 text-center">
+                    <div className="inline-flex items-center gap-6 md:gap-8 px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl">
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                        <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('稳定可靠')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                        <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('价格优惠')}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                        <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('即插即用')}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 功能对比区域 - 按照设计图样式 */}
+                <div className="w-full max-w-5xl mt-12 md:mt-16">
+                  <div className="mb-8 md:mb-12 text-center">
+                    <h2 className="mb-4 text-2xl font-bold md:text-4xl text-semi-color-text-0">
+                      {t('告别管理复杂性，开始交付功能。')}
+                    </h2>
+                  </div>
+                  <div className="grid gap-6 md:grid-cols-2">
+                    {/* 第一行：管理供应商关系 vs 单一API */}
+                    <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
+                      <div className="flex gap-4">
+                        <div className="flex-shrink-0 flex items-center">
+                          <div className="w-8 h-8 text-semi-color-text-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                              <circle cx="12" cy="12" r="3"/>
+                              <path d="M12 1v6m0 6v6"/>
+                              <path d="m21 12-6-3-6 3-6-3"/>
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-red-500 text-sm mt-1">✕</span>
+                            <p className="font-medium text-semi-color-text-1">{t('管理 5 个以上供应商关系')}</p>
+                          </div>
+                          <div className="flex items-start gap-2">
+                            <span className="text-green-500 text-sm mt-1">✓</span>
+                            <p className="font-medium text-semi-color-text-0">{t('单一API，单一合同，统一计费')}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
+                      <div className="flex gap-4">
+                        <div className="flex-shrink-0 flex items-center">
+                          <div className="w-8 h-8 text-semi-color-text-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                              <polyline points="16 18 22 12 16 6"/>
+                              <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-red-500 text-sm mt-1">✕</span>
+                            <p className="font-medium text-semi-color-text-1">{t('构建自定义重试逻辑')}</p>
+                          </div>
+                          <div className="flex items-start gap-2">
+                            <span className="text-green-500 text-sm mt-1">✓</span>
+                            <p className="font-medium text-semi-color-text-0">{t('提供商之间的自动故障转移')}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 第二行：容量限制 vs 智能路由 */}
+                    <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
+                      <div className="flex gap-4">
+                        <div className="flex-shrink-0 flex items-center">
+                          <div className="w-8 h-8 text-semi-color-text-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                              <polyline points="14,2 14,8 20,8"/>
+                              <line x1="16" y1="13" x2="8" y2="13"/>
+                              <line x1="16" y1="17" x2="8" y2="17"/>
+                              <polyline points="10,9 9,9 8,9"/>
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-red-500 text-sm mt-1">✕</span>
+                            <p className="font-medium text-semi-color-text-1">{t('容量和速率限制')}</p>
+                          </div>
+                          <div className="flex items-start gap-2">
+                            <span className="text-green-500 text-sm mt-1">✓</span>
+                            <p className="font-medium text-semi-color-text-0">{t('当达到限制时，故障转移到我们的容量')}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
+                      <div className="flex gap-4">
+                        <div className="flex-shrink-0 flex items-center">
+                          <div className="w-8 h-8 text-semi-color-text-1">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                              <path d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3"/>
+                              <circle cx="6" cy="17.25" r=".75"/>
+                              <circle cx="18" cy="17.25" r=".75"/>
+                            </svg>
+                          </div>
+                        </div>
+                        <div className="space-y-3">
+                          <div className="flex items-start gap-2">
+                            <span className="text-red-500 text-sm mt-1">✕</span>
+                            <p className="font-medium text-semi-color-text-1">{t('为每个新模型维护单独的代码')}</p>
+                          </div>
+                          <div className="flex items-start gap-2">
+                            <span className="text-green-500 text-sm mt-1">✓</span>
+                            <p className="font-medium text-semi-color-text-0">{t('模型间切换成本为零')}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
                 {/* 框架兼容性图标 */}
