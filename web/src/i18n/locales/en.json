@@ -1089,6 +1089,8 @@
   "当达到限制时，故障转移到我们的容量": "Fail over into our capacity when your limits are hit",
   "为每个新模型维护单独的代码": "Maintaining separate code for each new model",
   "模型间切换成本为零": "Zero switching cost between models",
+  "获取密钥": "Get API Key",
+  "文档": "Documentation",
   "文字输入": "Text input",
   "文字输出": "text output",
   "日志详情": "Log details",

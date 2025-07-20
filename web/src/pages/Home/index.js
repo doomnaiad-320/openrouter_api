@@ -135,77 +135,36 @@ const Home = () => {
                     {t('更好的价格，更好的稳定性，只需要将模型基址替换为：')}
                   </p>
 
-                  {/* 添加的指定元素 */}
-                  <div className="semi-input-wrapper flex-1 !rounded-full semi-input-wrapper__with-suffix semi-input-wrapper-readonly semi-input-wrapper-large">
-                    {/* 这里可以添加输入框内容 */}
-                  </div>
-
-                  <div className="flex flex-row gap-4 justify-center items-center">
-                    {/* 这里可以添加按钮或其他元素 */}
-                  </div>
-
-                  {/* 应用场景说明 */}
-                  <div className="mt-8 md:mt-10 max-w-4xl mx-auto">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-                      {/* 虚拟角色聊天 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
-                            <span className="text-white text-xl">🎭</span>
-                          </div>
-                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
-                            {t('虚拟角色聊天')}
-                          </h3>
-                        </div>
-                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
-                          {t('为 SillyTavern、Omate 等虚拟角色聊天应用提供优质的 Gemini、Claude API 接口，让您的 AI 角色更加生动智能。')}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">SillyTavern</span>
-                          <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">Omate</span>
-                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Gemini</span>
-                          <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">Claude</span>
-                        </div>
-                      </div>
-
-                      {/* 开发者工具 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
-                        <div className="flex items-center mb-4">
-                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
-                            <span className="text-white text-xl">💻</span>
-                          </div>
-                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
-                            {t('开发者工具')}
-                          </h3>
-                        </div>
-                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
-                          {t('为 Claude Code、Cline、Rook Code 等开发工具提供低价的 Claude Sonnet 4、Gemini 2.5 Pro，助力高效编程。')}
-                        </p>
-                        <div className="flex flex-wrap gap-2 mt-4">
-                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Claude Code</span>
-                          <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium">Cline</span>
-                          <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">Rook Code</span>
-                          <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Sonnet 4</span>
-                        </div>
-                      </div>
+                  {/* URL输入框和按钮 - 按照设计图样式 */}
+                  <div className="mt-6 md:mt-8 w-full max-w-md">
+                    <div className="flex items-center bg-white border border-gray-200 rounded-full px-4 py-3 shadow-sm">
+                      <input
+                        type="text"
+                        value="https://myai.mdioo.store"
+                        readOnly
+                        className="flex-1 text-sm text-gray-700 bg-transparent border-none outline-none"
+                      />
+                      <span className="text-blue-500 text-sm font-medium mx-2">/v1/messages</span>
+                      <button className="p-1 text-gray-400 hover:text-gray-600">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
+                      </button>
                     </div>
 
-                    {/* 特色优势 */}
-                    <div className="mt-8 md:mt-10 text-center">
-                      <div className="inline-flex items-center gap-6 md:gap-8 px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl">
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('稳定可靠')}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
-                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('价格优惠')}</span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
-                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('即插即用')}</span>
-                        </div>
-                      </div>
+                    <div className="flex gap-4 justify-center items-center mt-4">
+                      <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                          <path d="M8 5v14l11-7z"/>
+                        </svg>
+                        {t('获取密钥')}
+                      </button>
+                      <button className="text-blue-500 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2">
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        {t('文档')}
+                      </button>
                     </div>
                   </div>
 
@@ -317,6 +276,73 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
+
+                  {/* 应用场景说明 */}
+                  <div className="mt-8 md:mt-10 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      {/* 虚拟角色聊天 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                            <span className="text-white text-xl">🎭</span>
+                          </div>
+                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
+                            {t('虚拟角色聊天')}
+                          </h3>
+                        </div>
+                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
+                          {t('为 SillyTavern、Omate 等虚拟角色聊天应用提供优质的 Gemini、Claude API 接口，让您的 AI 角色更加生动智能。')}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">SillyTavern</span>
+                          <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">Omate</span>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Gemini</span>
+                          <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">Claude</span>
+                        </div>
+                      </div>
+
+                      {/* 开发者工具 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
+                            <span className="text-white text-xl">💻</span>
+                          </div>
+                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
+                            {t('开发者工具')}
+                          </h3>
+                        </div>
+                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
+                          {t('为 Claude Code、Cline、Rook Code 等开发工具提供低价的 Claude Sonnet 4、Gemini 2.5 Pro，助力高效编程。')}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Claude Code</span>
+                          <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium">Cline</span>
+                          <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">Rook Code</span>
+                          <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Sonnet 4</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 特色优势 */}
+                    <div className="mt-8 md:mt-10 text-center">
+                      <div className="inline-flex items-center gap-6 md:gap-8 px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('稳定可靠')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('价格优惠')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('即插即用')}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
 
                   {/* BASE URL 与端点选择 */}
                   <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mt-4 md:mt-6 max-w-md">
