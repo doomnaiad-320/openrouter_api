@@ -135,6 +135,15 @@ const Home = () => {
                     {t('更好的价格，更好的稳定性，只需要将模型基址替换为：')}
                   </p>
 
+                  {/* 添加的指定元素 */}
+                  <div className="semi-input-wrapper flex-1 !rounded-full semi-input-wrapper__with-suffix semi-input-wrapper-readonly semi-input-wrapper-large">
+                    {/* 这里可以添加输入框内容 */}
+                  </div>
+
+                  <div className="flex flex-row gap-4 justify-center items-center">
+                    {/* 这里可以添加按钮或其他元素 */}
+                  </div>
+
                   {/* 应用场景说明 */}
                   <div className="mt-8 md:mt-10 max-w-4xl mx-auto">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
