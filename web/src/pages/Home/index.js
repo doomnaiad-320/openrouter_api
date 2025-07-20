@@ -135,37 +135,48 @@ const Home = () => {
                     {t('更好的价格，更好的稳定性，只需要将模型基址替换为：')}
                   </p>
 
-                  {/* URL输入框和按钮 - 按照设计图样式 */}
-                  <div className="mt-6 md:mt-8 w-full max-w-md">
-                    <div className="flex items-center bg-white border border-gray-200 rounded-full px-4 py-3 shadow-sm">
-                      <input
-                        type="text"
-                        value="https://myai.mdioo.store"
-                        readOnly
-                        className="flex-1 text-sm text-gray-700 bg-transparent border-none outline-none"
-                      />
-                      <span className="text-blue-500 text-sm font-medium mx-2">/v1/messages</span>
-                      <button className="p-1 text-gray-400 hover:text-gray-600">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
-                      </button>
-                    </div>
+                  {/* BASE URL 与端点选择 - 使用原来的UI样式 */}
+                  <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mt-4 md:mt-6 max-w-md">
+                    <Input
+                      readonly
+                      value={serverAddress}
+                      className="flex-1 !rounded-full"
+                      size={isMobile() ? 'default' : 'large'}
+                      suffix={
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-500 font-medium">/v1/messages</span>
+                          <Button
+                            theme="borderless"
+                            icon={<IconCopy />}
+                            size="small"
+                            onClick={() => copy(serverAddress, t('复制成功！'))}
+                          />
+                        </div>
+                      }
+                    />
+                  </div>
 
-                    <div className="flex gap-4 justify-center items-center mt-4">
-                      <button className="bg-blue-500 hover:bg-blue-600 text-white px-6 py-2 rounded-full text-sm font-medium transition-colors flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M8 5v14l11-7z"/>
-                        </svg>
-                        {t('获取密钥')}
-                      </button>
-                      <button className="text-blue-500 hover:text-blue-600 px-4 py-2 text-sm font-medium transition-colors flex items-center gap-2">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                        </svg>
-                        {t('文档')}
-                      </button>
-                    </div>
+                  <div className="flex gap-4 justify-center items-center mt-4">
+                    <Button
+                      theme="solid"
+                      type="primary"
+                      size="large"
+                      icon={<IconPlay />}
+                      onClick={() => window.open('/settings/keys', '_blank')}
+                      className="!rounded-full"
+                    >
+                      {t('获取密钥')}
+                    </Button>
+                    <Button
+                      theme="borderless"
+                      type="tertiary"
+                      size="large"
+                      icon={<IconFile />}
+                      onClick={() => window.open('/docs', '_blank')}
+                      className="!rounded-full"
+                    >
+                      {t('文档')}
+                    </Button>
                   </div>
 
                   {/* 功能对比区域 - 按照设计图样式 */}
