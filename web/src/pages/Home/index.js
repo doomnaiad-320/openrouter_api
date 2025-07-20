@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next';
 import { IconGithubLogo, IconPlay, IconFile, IconCopy } from '@douyinfe/semi-icons';
 import { Link } from 'react-router-dom';
 import NoticeModal from '../../components/layout/NoticeModal';
+import SEO from '../../components/SEO';
 import { Moonshot, OpenAI, XAI, Zhipu, Volcengine, Cohere, Claude, Gemini, Suno, Minimax, Wenxin, Spark, Qingyan, DeepSeek, Qwen, Midjourney, Grok, AzureAI, Hunyuan, Xinference } from '@lobehub/icons';
 
 const { Text } = Typography;
@@ -95,6 +96,12 @@ const Home = () => {
 
   return (
     <div className="w-full overflow-x-hidden">
+      <SEO
+        title={t('为您的 AI 应用注入无限动力')}
+        description={t('我们提供专为虚拟角色聊天、开发者工具和高级 AI 应用设计的统一 API 网关，稳定、低价、高效。支持 OpenAI、Claude、Gemini 等多种顶尖模型。')}
+        keywords="AI API,OpenAI API,Claude API,Gemini API,AI网关,人工智能接口,SillyTavern,虚拟角色聊天,开发者工具,API管理"
+        url="/"
+      />
       <NoticeModal
         visible={noticeVisible}
         onClose={() => setNoticeVisible(false)}

@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import '@douyinfe/semi-ui/dist/css/semi.css';
 import { UserProvider } from './context/User';
 import 'react-toastify/dist/ReactToastify.css';
@@ -16,16 +17,18 @@ import './index.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <StatusProvider>
-      <UserProvider>
-        <BrowserRouter>
-          <ThemeProvider>
-            <StyleProvider>
-              <PageLayout />
-            </StyleProvider>
-          </ThemeProvider>
-        </BrowserRouter>
-      </UserProvider>
-    </StatusProvider>
+    <HelmetProvider>
+      <StatusProvider>
+        <UserProvider>
+          <BrowserRouter>
+            <ThemeProvider>
+              <StyleProvider>
+                <PageLayout />
+              </StyleProvider>
+            </ThemeProvider>
+          </BrowserRouter>
+        </UserProvider>
+      </StatusProvider>
+    </HelmetProvider>
   </React.StrictMode>,
 );
