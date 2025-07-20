@@ -457,14 +457,14 @@ const Home = () => {
                             POST
                           </span>
                           <span className="text-gray-700">
-                            {serverAddress}/v1/chat/completions
+                            {serverAddress}/v1
                           </span>
                         </div>
                         <Button
                           theme="borderless"
                           icon={<IconCopy />}
                           size="small"
-                          onClick={() => copy(`${serverAddress}/v1/chat/completions`, t('复制成功！'))}
+                          onClick={() => copy(`${serverAddress}/v1`, t('复制成功！'))}
                         />
                       </div>
                     </div>
@@ -484,32 +484,28 @@ const Home = () => {
                           {pricingData.map((item, index) => (
                             <div
                               key={index}
-                              className="flex items-center justify-between py-3 px-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                              className="flex items-center py-3 px-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
                             >
+                              {/* 模型名称 */}
                               <div className="flex-1">
-                                <div className="flex items-center gap-3 mb-1">
-                                  <Text className="font-medium text-semi-color-text-0">
-                                    {item.model_name}
-                                  </Text>
-                                  <Tag
-                                    color={item.quota_type === 0 ? "blue" : "green"}
-                                    size="small"
-                                    className="text-xs"
-                                  >
-                                    {item.quota_type === 0 ? t('按量计费') : t('按次计费')}
-                                  </Tag>
-                                </div>
-                                <div className="flex items-center gap-2">
-                                  <Text type="tertiary" className="text-xs font-mono text-blue-600">
-                                    {item.model_name.toLowerCase()}
-                                  </Text>
-                                  <Text type="tertiary" className="text-xs text-gray-500 uppercase">
-                                    CLAUDE
-                                  </Text>
-                                </div>
+                                <Text className="font-medium text-semi-color-text-0">
+                                  {item.model_name}
+                                </Text>
                               </div>
 
-                              <div className="text-right">
+                              {/* 计费类型 */}
+                              <div className="flex-1 text-center">
+                                <Tag
+                                  color={item.quota_type === 0 ? "blue" : "green"}
+                                  size="small"
+                                  className="text-xs"
+                                >
+                                  {item.quota_type === 0 ? t('按量计费') : t('按次计费')}
+                                </Tag>
+                              </div>
+
+                              {/* 价格 */}
+                              <div className="flex-1 text-right">
                                 {item.quota_type === 0 ? (
                                   <div className="space-y-1">
                                     <div className="text-xs text-gray-600">
