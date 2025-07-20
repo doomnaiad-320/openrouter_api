@@ -425,70 +425,127 @@ const Home = () => {
                   </div>
                 </div>
 
-                {/* 价格清单 */}
-                <div className="w-full max-w-5xl mt-12 md:mt-16">
-                  <div className="mb-8 md:mb-12 text-center">
-                    <Title heading={2} className="mb-4 text-2xl font-bold md:text-4xl text-semi-color-text-0">
-                      {t('透明定价')}
-                    </Title>
-                    <Text type="tertiary" className="text-base md:text-lg">
-                      {t('实时价格，按需付费，无隐藏费用')}
-                    </Text>
-                  </div>
-
-                  {pricingLoading ? (
-                    <div className="flex justify-center py-8">
-                      <Spin size="large" />
+                {/* API使用说明 - 按照设计图样式 */}
+                <div className="w-full max-w-4xl mt-12 md:mt-16">
+                  <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8">
+                    {/* 标题部分 */}
+                    <div className="mb-6">
+                      <div className="flex items-center gap-3 mb-2">
+                        <div className="w-6 h-6 flex items-center justify-center">
+                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-full h-full text-semi-color-text-0">
+                            <polyline points="16 18 22 12 16 6"/>
+                            <polyline points="8 6 2 12 8 18"/>
+                          </svg>
+                        </div>
+                        <Title heading={3} className="text-xl md:text-2xl font-bold text-semi-color-text-0 mb-0">
+                          {t('API使用说明')}
+                        </Title>
+                      </div>
+                      <Text type="tertiary" className="text-sm md:text-base">
+                        {t('使用您的API密钥将Claude集成到您的应用程序中')}
+                      </Text>
                     </div>
-                  ) : (
-                    <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
-                      {pricingData.map((item, index) => (
-                        <Card
-                          key={index}
-                          className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border hover:shadow-lg transition-all duration-300 hover:scale-105"
-                          bodyStyle={{ padding: '20px' }}
-                        >
-                          <div className="text-center">
-                            <Title heading={4} className="text-lg font-semibold text-semi-color-text-0 mb-2">
-                              {item.model_name}
-                            </Title>
-                            <Tag color="blue" className="mb-3">
-                              {item.formatted_price.type}
-                            </Tag>
-                            {item.quota_type === 0 ? (
-                              <div className="space-y-2">
-                                <div className="text-sm text-semi-color-text-1">
-                                  {t('提示')}: {item.formatted_price.input}
+
+                    {/* API Endpoint */}
+                    <div className="mb-8">
+                      <Text className="text-sm font-medium text-semi-color-text-0 mb-3">
+                        {t('API Endpoint')}
+                      </Text>
+                      <div className="bg-gray-100 rounded-lg p-3 font-mono text-sm flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <span className="bg-green-100 text-green-800 px-2 py-1 rounded text-xs font-medium">
+                            POST
+                          </span>
+                          <span className="text-gray-700">
+                            {serverAddress}/v1/chat/completions
+                          </span>
+                        </div>
+                        <Button
+                          theme="borderless"
+                          icon={<IconCopy />}
+                          size="small"
+                          onClick={() => copy(`${serverAddress}/v1/chat/completions`, t('复制成功！'))}
+                        />
+                      </div>
+                    </div>
+
+                    {/* 可用模型列表 */}
+                    <div>
+                      <Text className="text-sm font-medium text-semi-color-text-0 mb-4">
+                        {t('可用模型')}
+                      </Text>
+
+                      {pricingLoading ? (
+                        <div className="flex justify-center py-8">
+                          <Spin size="large" />
+                        </div>
+                      ) : (
+                        <div className="space-y-3">
+                          {pricingData.map((item, index) => (
+                            <div
+                              key={index}
+                              className="flex items-center justify-between py-3 px-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                            >
+                              <div className="flex-1">
+                                <div className="flex items-center gap-3 mb-1">
+                                  <Text className="font-medium text-semi-color-text-0">
+                                    {item.model_name}
+                                  </Text>
+                                  <Tag
+                                    color={item.quota_type === 0 ? "blue" : "green"}
+                                    size="small"
+                                    className="text-xs"
+                                  >
+                                    {item.quota_type === 0 ? t('按量计费') : t('按次计费')}
+                                  </Tag>
                                 </div>
-                                <div className="text-sm text-semi-color-text-1">
-                                  {t('补全')}: {item.formatted_price.completion}
-                                </div>
-                                <div className="text-xs text-semi-color-text-2 mt-2">
-                                  {t('倍率')}: {item.model_ratio}x
+                                <div className="flex items-center gap-2">
+                                  <Text type="tertiary" className="text-xs font-mono text-blue-600">
+                                    {item.model_name.toLowerCase()}
+                                  </Text>
+                                  <Text type="tertiary" className="text-xs text-gray-500 uppercase">
+                                    CLAUDE
+                                  </Text>
                                 </div>
                               </div>
-                            ) : (
-                              <div className="space-y-2">
-                                <div className="text-lg font-bold text-semi-color-text-0">
-                                  {item.formatted_price.price}
-                                </div>
-                                <div className="text-xs text-semi-color-text-2">
-                                  {t('按次计费')}
-                                </div>
-                              </div>
-                            )}
-                          </div>
-                        </Card>
-                      ))}
-                    </div>
-                  )}
 
-                  <div className="text-center mt-8">
-                    <Link to="/pricing">
-                      <Button theme="borderless" type="primary" size="large">
-                        {t('查看完整价格表')}
-                      </Button>
-                    </Link>
+                              <div className="text-right">
+                                {item.quota_type === 0 ? (
+                                  <div className="space-y-1">
+                                    <div className="text-xs text-gray-600">
+                                      {item.formatted_price.input} {t('输入')}
+                                    </div>
+                                    <div className="text-xs text-gray-600">
+                                      {item.formatted_price.completion} {t('输出')}
+                                    </div>
+                                    <div className="text-xs text-blue-600">
+                                      {t('倍率')}: {item.model_ratio}x
+                                    </div>
+                                  </div>
+                                ) : (
+                                  <div className="space-y-1">
+                                    <div className="text-sm font-medium text-gray-900">
+                                      {item.formatted_price.price}
+                                    </div>
+                                    <div className="text-xs text-blue-600">
+                                      {t('倍率')}: 1x
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+
+                      <div className="text-center mt-6">
+                        <Link to="/pricing">
+                          <Button theme="borderless" type="primary" size="large">
+                            {t('查看完整价格表')}
+                          </Button>
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
