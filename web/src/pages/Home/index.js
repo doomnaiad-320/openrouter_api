@@ -209,67 +209,108 @@ const Home = () => {
                     </div>
                   </div>
 
-                  {/* 功能对比区域 - 参考 OpenRouter Enterprise */}
+                  {/* 功能对比区域 - 按照设计图样式 */}
                   <div className="w-full max-w-5xl mt-12 md:mt-16">
                     <div className="mb-8 md:mb-12 text-center">
                       <h2 className="mb-4 text-2xl font-bold md:text-4xl text-semi-color-text-0">
-                        {t('告别复杂配置，专注业务开发')}
+                        {t('告别管理复杂性，开始交付功能。')}
                       </h2>
                     </div>
                     <div className="grid gap-6 md:grid-cols-2">
-                      {/* 传统方式的问题 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6">
+                      {/* 第一行：管理供应商关系 vs 单一API */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
                         <div className="flex gap-4">
                           <div className="flex-shrink-0 flex items-center">
-                            <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
-                              <span className="text-red-600 text-lg">❌</span>
+                            <div className="w-8 h-8 text-semi-color-text-1">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                                <circle cx="12" cy="12" r="3"/>
+                                <path d="M12 1v6m0 6v6"/>
+                                <path d="m21 12-6-3-6 3-6-3"/>
+                              </svg>
                             </div>
                           </div>
                           <div className="space-y-3">
                             <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-1">{t('管理多个API提供商关系')}</p>
+                              <span className="text-red-500 text-sm mt-1">✕</span>
+                              <p className="font-medium text-semi-color-text-1">{t('管理 5 个以上供应商关系')}</p>
                             </div>
                             <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-1">{t('构建复杂的重试逻辑')}</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-1">{t('处理容量和速率限制')}</p>
-                            </div>
-                            <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-1">{t('为每个模型维护单独代码')}</p>
+                              <span className="text-green-500 text-sm mt-1">✓</span>
+                              <p className="font-medium text-semi-color-text-0">{t('单一API，单一合同，统一计费')}</p>
                             </div>
                           </div>
                         </div>
                       </div>
 
-                      {/* 我们的解决方案 */}
-                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6">
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
                         <div className="flex gap-4">
                           <div className="flex-shrink-0 flex items-center">
-                            <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                              <span className="text-green-600 text-lg">✅</span>
+                            <div className="w-8 h-8 text-semi-color-text-1">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                              </svg>
                             </div>
                           </div>
                           <div className="space-y-3">
                             <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-0">{t('单一API，统一计费')}</p>
+                              <span className="text-red-500 text-sm mt-1">✕</span>
+                              <p className="font-medium text-semi-color-text-1">{t('构建自定义重试逻辑')}</p>
                             </div>
                             <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-0">{t('自动故障转移')}</p>
+                              <span className="text-green-500 text-sm mt-1">✓</span>
+                              <p className="font-medium text-semi-color-text-0">{t('提供商之间的自动故障转移')}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 第二行：容量限制 vs 智能路由 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 flex items-center">
+                            <div className="w-8 h-8 text-semi-color-text-1">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14,2 14,8 20,8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10,9 9,9 8,9"/>
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-2">
+                              <span className="text-red-500 text-sm mt-1">✕</span>
+                              <p className="font-medium text-semi-color-text-1">{t('容量和速率限制')}</p>
                             </div>
                             <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-0">{t('智能负载均衡')}</p>
+                              <span className="text-green-500 text-sm mt-1">✓</span>
+                              <p className="font-medium text-semi-color-text-0">{t('当达到限制时，故障转移到我们的容量')}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-xl p-6">
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 flex items-center">
+                            <div className="w-8 h-8 text-semi-color-text-1">
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-full h-full">
+                                <path d="M5.25 14.25h13.5m-13.5 0a3 3 0 0 1-3-3m3 3a3 3 0 1 0 0 6h13.5a3 3 0 1 0 0-6m-16.5-3a3 3 0 0 1 3-3h13.5a3 3 0 0 1 3 3"/>
+                                <circle cx="6" cy="17.25" r=".75"/>
+                                <circle cx="18" cy="17.25" r=".75"/>
+                              </svg>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-2">
+                              <span className="text-red-500 text-sm mt-1">✕</span>
+                              <p className="font-medium text-semi-color-text-1">{t('为每个新模型维护单独的代码')}</p>
                             </div>
                             <div className="flex items-start gap-2">
-                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
-                              <p className="font-medium text-semi-color-text-0">{t('零切换成本')}</p>
+                              <span className="text-green-500 text-sm mt-1">✓</span>
+                              <p className="font-medium text-semi-color-text-0">{t('模型间切换成本为零')}</p>
                             </div>
                           </div>
                         </div>
