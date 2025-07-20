@@ -199,6 +199,75 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
+
+                  {/* 功能对比区域 - 参考 OpenRouter Enterprise */}
+                  <div className="w-full max-w-5xl mt-12 md:mt-16">
+                    <div className="mb-8 md:mb-12 text-center">
+                      <h2 className="mb-4 text-2xl font-bold md:text-4xl text-semi-color-text-0">
+                        {t('告别复杂配置，专注业务开发')}
+                      </h2>
+                    </div>
+                    <div className="grid gap-6 md:grid-cols-2">
+                      {/* 传统方式的问题 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6">
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 flex items-center">
+                            <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center">
+                              <span className="text-red-600 text-lg">❌</span>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-1">{t('管理多个API提供商关系')}</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-1">{t('构建复杂的重试逻辑')}</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-1">{t('处理容量和速率限制')}</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-red-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-1">{t('为每个模型维护单独代码')}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* 我们的解决方案 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6">
+                        <div className="flex gap-4">
+                          <div className="flex-shrink-0 flex items-center">
+                            <div className="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                              <span className="text-green-600 text-lg">✅</span>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-0">{t('单一API，统一计费')}</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-0">{t('自动故障转移')}</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-0">{t('智能负载均衡')}</p>
+                            </div>
+                            <div className="flex items-start gap-2">
+                              <span className="w-1 h-1 bg-green-500 rounded-full mt-2 flex-shrink-0"></span>
+                              <p className="font-medium text-semi-color-text-0">{t('零切换成本')}</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
                   {/* BASE URL 与端点选择 */}
                   <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mt-4 md:mt-6 max-w-md">
                     <Input
