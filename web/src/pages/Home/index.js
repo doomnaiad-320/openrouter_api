@@ -134,6 +134,71 @@ const Home = () => {
                   <p className="text-base md:text-lg lg:text-xl text-semi-color-text-1 mt-4 md:mt-6 max-w-xl">
                     {t('更好的价格，更好的稳定性，只需要将模型基址替换为：')}
                   </p>
+
+                  {/* 应用场景说明 */}
+                  <div className="mt-8 md:mt-10 max-w-4xl mx-auto">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                      {/* 虚拟角色聊天 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-xl flex items-center justify-center mr-4">
+                            <span className="text-white text-xl">🎭</span>
+                          </div>
+                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
+                            {t('虚拟角色聊天')}
+                          </h3>
+                        </div>
+                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
+                          {t('为 SillyTavern、Omate 等虚拟角色聊天应用提供优质的 Gemini、Claude API 接口，让您的 AI 角色更加生动智能。')}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-medium">SillyTavern</span>
+                          <span className="px-3 py-1 bg-pink-100 text-pink-700 rounded-full text-xs font-medium">Omate</span>
+                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Gemini</span>
+                          <span className="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-full text-xs font-medium">Claude</span>
+                        </div>
+                      </div>
+
+                      {/* 开发者工具 */}
+                      <div className="bg-semi-color-bg-1 backdrop-blur-sm border border-semi-color-border rounded-2xl p-6 md:p-8 hover:shadow-lg transition-all duration-300 hover:scale-105">
+                        <div className="flex items-center mb-4">
+                          <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-xl flex items-center justify-center mr-4">
+                            <span className="text-white text-xl">💻</span>
+                          </div>
+                          <h3 className="text-lg md:text-xl font-semibold text-semi-color-text-0">
+                            {t('开发者工具')}
+                          </h3>
+                        </div>
+                        <p className="text-sm md:text-base text-semi-color-text-1 leading-relaxed">
+                          {t('为 Claude Code、Cline、Rook Code 等开发工具提供低价的 Claude Sonnet 4、Gemini 2.5 Pro，助力高效编程。')}
+                        </p>
+                        <div className="flex flex-wrap gap-2 mt-4">
+                          <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">Claude Code</span>
+                          <span className="px-3 py-1 bg-cyan-100 text-cyan-700 rounded-full text-xs font-medium">Cline</span>
+                          <span className="px-3 py-1 bg-teal-100 text-teal-700 rounded-full text-xs font-medium">Rook Code</span>
+                          <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-medium">Sonnet 4</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* 特色优势 */}
+                    <div className="mt-8 md:mt-10 text-center">
+                      <div className="inline-flex items-center gap-6 md:gap-8 px-6 py-4 bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200 rounded-2xl">
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('稳定可靠')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></span>
+                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('价格优惠')}</span>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <span className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></span>
+                          <span className="text-sm md:text-base font-medium text-semi-color-text-0">{t('即插即用')}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                   {/* BASE URL 与端点选择 */}
                   <div className="flex flex-col md:flex-row items-center justify-center gap-4 w-full mt-4 md:mt-6 max-w-md">
                     <Input
