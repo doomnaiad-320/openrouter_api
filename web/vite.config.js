@@ -63,17 +63,17 @@ export default defineConfig({
     host: '0.0.0.0',
     proxy: {
       '/api': {
-        target: 'http://1.92.83.101:3300',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       },
       '/mj': {
-        target: 'http://1.92.83.101:3300',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       },
       '/pg': {
-        target: 'http://1.92.83.101:3300',
+        target: 'http://localhost:3000',
         changeOrigin: true,
         secure: false,
       },
